@@ -1,0 +1,79 @@
+from django.db import models
+# from django.urls import reverse
+
+
+class Soldiers(models.Model):
+    """
+    Поіменний список військовослужбовців підрозділу
+    """
+    surname = models.CharField(max_length = 255, verbose_name='Фамілія')
+    name = models.CharField(max_length = 255, verbose_name='Імʼя')
+    fathers_name = models.CharField(max_length = 255, verbose_name='По батькові')
+
+    def __str__(self):
+        return self.surname
+
+    class Meta:
+        verbose_name = 'Військовослужбовець'
+        verbose_name_plural = 'Військовослужбовці'
+
+
+class StaffPlan(models.Model):
+    """
+    Штатний рзклад стрілецької роти
+    """ 
+    slug = models.SlugField(max_length=50, unique=True,  verbose_name='Код посади') 
+    soldier = models.OneToOneField('Soldiers', on_delete=models.PROTECT, unique=True,  verbose_name='Військовослужбовець')
+    position_name = models.CharField(max_length=50, verbose_name='Посада')
+    mil_prof = models.CharField(max_length=50, verbose_name='ВОС')
+    position_rank = models.CharField(max_length=50, verbose_name='Звання посади')
+    
+    def __str__(self):
+        return self.slug
+
+    class Meta:
+        verbose_name = 'Штатний розклад'
+        verbose_name_plural = 'Штатний розклад'
+        ordering = ['slug']
+
+
+class Weapons(models.Model):
+    """
+    Список зброї яка знаходиться в підрозділі
+    """
+    weapon_name = models.CharField(max_length=50, verbose_name='Наіменування зброї')
+    weapon_number = models.CharField(max_length=50, unique=True, verbose_name='Номер зброї')
+    TYPES= (
+            ('p', 'Пістолет'),
+            ('s', 'Стрілкова зброя'),
+            ('m', 'Кулемет ручний'),
+            ('mb', 'Кулемет великокаліберний'),
+            ('mr', 'Міномет'),
+            ('g', 'Гранатомет'),
+            )
+    weapon_type = models.CharField(max_length=50, choices=TYPES, verbose_name='Тип зброї')
+    weapon_registration = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.weapon_name    
+    
+    class Meta:
+        verbose_name = 'Зброя підрозділу'
+        verbose_name_plural = 'Зброя підрозділу'
+        ordering = ['weapon_type', 'weapon_name']
+    
+    
+class WeaponCard(models.Model):
+    """
+    Картка закріпленної зборої за військовослужбовцем 
+    """
+    soldier = models.ForeignKey('Soldiers', on_delete=models.PROTECT, verbose_name='Військовослужбовець' )
+    weapon = models.OneToOneField('Weapons', on_delete=models.PROTECT, unique=True,  verbose_name='Закріплена зброя' )
+
+    def __str__(self):
+        return self.soldier
+    class Meta:
+        verbose_name = 'Картка зброї військовослужбовця'
+        verbose_name_plural = 'Картки зброї військовослужбовців'
+        ordering = ['soldier']
+        
