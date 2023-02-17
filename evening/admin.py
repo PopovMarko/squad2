@@ -1,6 +1,5 @@
 from django.contrib import admin
 from . models import *
-# Register your models here.
 
 
 class StaffPlanAdmin(admin.ModelAdmin):
@@ -22,7 +21,8 @@ class WeaponCardAdmin(admin.ModelAdmin):
 
 
 class SoldiersAdmin(admin.ModelAdmin):
-    list_display = ('surname', 'name', 'fathers_name', 'callsign')
+    list_display = ('surname', 'name',
+                    'fathers_name', 'callsign')
     list_display_links = ('surname',)
     search_fields = ('surname', 'callsign')
 

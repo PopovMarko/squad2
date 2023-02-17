@@ -6,13 +6,23 @@ class Soldiers(models.Model):
     """
     Поіменний список військовослужбовців підрозділу
     """
+    slug = models.SlugField(max_length=50, unique=True, null=True,
+                            verbose_name='Код посади')
     surname = models.CharField(max_length=50, verbose_name='Фамілія')
     name = models.CharField(max_length=50, verbose_name='Імʼя')
     fathers_name = models.CharField(max_length=50, verbose_name='По батькові')
     callsign = models.CharField(max_length=50, verbose_name='Позивний')
+    position_name = models.CharField(
+        max_length=50, null=True, verbose_name='Посада')
+    mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
+    position_rank = models.CharField(
+        max_length=50, null=True, verbose_name='Звання посади')
+
+    # def get_position(self):
+    #     return self.StaffPlan_set.position_name
 
     def __str__(self):
-        return self.surname
+        return self.surname + self.name
 
     class Meta:
         verbose_name = 'Військовослужбовець'
@@ -23,14 +33,15 @@ class StaffPlan(models.Model):
     """
     Штатний рзклад стрілецької роти
     """
-    slug = models.SlugField(max_length=50, unique=True,
+    slug = models.SlugField(max_length=50, unique=True, null=True,
                             verbose_name='Код посади')
     soldier = models.OneToOneField(
         'Soldiers', on_delete=models.PROTECT, unique=True,  verbose_name='Військовослужбовець')
-    position_name = models.CharField(max_length=50, verbose_name='Посада')
-    mil_prof = models.CharField(max_length=50, verbose_name='ВОС')
+    position_name = models.CharField(
+        max_length=50, null=True, verbose_name='Посада')
+    mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
     position_rank = models.CharField(
-        max_length=50, verbose_name='Звання посади')
+        max_length=50, null=True, verbose_name='Звання посади')
 
     def __str__(self):
         return self.slug
@@ -82,7 +93,7 @@ class WeaponCard(models.Model):
     )
 
     def __str__(self):
-        return self.soldier
+        return self.soldier.surname
 
     class Meta:
         verbose_name = 'Картка зброї військовослужбовця'
