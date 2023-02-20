@@ -22,33 +22,11 @@ class Soldiers(models.Model):
     #     return self.StaffPlan_set.position_name
 
     def __str__(self):
-        return self.surname + self.name
+        return f'{self.surname} {self.name}.{self.fathers_name}.'
 
     class Meta:
         verbose_name = 'Військовослужбовець'
         verbose_name_plural = 'Військовослужбовці'
-
-
-class StaffPlan(models.Model):
-    """
-    Штатний рзклад стрілецької роти
-    """
-    slug = models.SlugField(max_length=50, unique=True, null=True,
-                            verbose_name='Код посади')
-    soldier = models.OneToOneField(
-        'Soldiers', on_delete=models.PROTECT, unique=True,  verbose_name='Військовослужбовець')
-    position_name = models.CharField(
-        max_length=50, null=True, verbose_name='Посада')
-    mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
-    position_rank = models.CharField(
-        max_length=50, null=True, verbose_name='Звання посади')
-
-    def __str__(self):
-        return self.slug
-
-    class Meta:
-        verbose_name = 'Штатний розклад'
-        verbose_name_plural = 'Штатний розклад'
         ordering = ['slug']
 
 

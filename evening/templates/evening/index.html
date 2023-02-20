@@ -1,12 +1,43 @@
- !DOCTYPE html>
-<html>
-  <head> 
-    <meta charset='UTF-8'> 
-    <title> Main Page</title> 
+{% extends "evening/base_generic.html" %}
 
-  </head> 
-  <body> 
+{% block content %}
+<h1>Штатний розклад та списочний состав</h1>
 
-  </body> 
+  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
 
-</html>
+<h2>Dynamic content of the new site</h2>
+
+  <!-- <p>The library has the following record counts:</p> -->
+  <!-- <ul> -->
+  <!--   <li><strong>Books:</strong> {{ SoldiersList.name}}</li> -->
+  <!--   <li><strong>Copies:</strong> {{ num_instances }}</li> -->
+  <!--   <li><strong>Copies available:</strong> {{ num_instances_available }}</li> -->
+  <!--   <li><strong>Authors:</strong> {{ num_authors }}</li> -->
+  <!-- </ul> -->
+  <!-- <ul> -->
+  <!--   {% for i in soldiers_list %} -->
+  <!--   <li>{{i.slug}} {{i.position_name}} {{i.surname}} {{i.name}}</li> -->
+  <!--   {% endfor %} -->
+  <!-- </ul>   -->
+  <style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
+  <table>
+  <tr>
+    <th>код посади</th>
+    <th>slkdjlkjdlkfjl</th> 
+    <th>Country</th>
+  </tr>
+    {% for i in soldiers_list %}
+  <tr>
+    <td>{{i.slug}}</td>
+    <td>{{i.name}}</td>
+    <td>{{i.surname}}</td> 
+    <td>{{i.fathers_name}}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% endblock %}
