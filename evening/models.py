@@ -17,6 +17,8 @@ class Soldiers(models.Model):
     mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
     position_rank = models.CharField(
         max_length=50, null=True, verbose_name='Звання посади')
+    rank = models.ForeignKey(
+        'Ranks', on_delete=models.PROTECT, null=True, verbose_name='Звання')
 
     # def get_position(self):
     #     return self.StaffPlan_set.position_name
@@ -77,3 +79,10 @@ class WeaponCard(models.Model):
         verbose_name = 'Картка зброї військовослужбовця'
         verbose_name_plural = 'Картки зброї військовослужбовців'
         ordering = ['soldier']
+
+
+class Ranks (models.Model):
+    rank = models.CharField(max_length=50,)
+
+    def __str__(self):
+        return self.rank
