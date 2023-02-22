@@ -1,0 +1,35 @@
+{% extends "evening/base_generic.html" %} {% block content %}
+<h2>Список зброї підрозділу</h2>
+
+<!-- <p>кількість </p> -->
+
+<!-- <h2>Dynamic content of the new site</h2> -->
+
+<!-- <p>The library has the following record counts:</p> -->
+<!-- <ul> -->
+<!--   <li><strong>Books:</strong> {{ SoldiersList.name}}</li> -->
+<!--   <li><strong>Copies:</strong> {{ num_instances }}</li> -->
+<!--   <li><strong>Copies available:</strong> {{ num_instances_available }}</li> -->
+<!--   <li><strong>Authors:</strong> {{ num_authors }}</li> -->
+<!-- </ul> -->
+<!-- <ul> -->
+
+<table>
+  <tr>
+    <th>Тип зброї</th>
+    <th>Найменування</th>
+    <th>Номер</th>
+    <th>Рік виготовлення</th>
+    <th>Рєєстрація</th>
+  </tr>
+  {% for w in weapons_list %}
+  <tr>
+    <td><a href="{}">{{w.weapon_type}}</a></td>
+    <td>{{w.weapon_name}}</td>
+    <td>{{w.weapon_number}}</td>
+    <td>{{w.year_manufacture}}</td>
+    <td>{{w.registration}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
