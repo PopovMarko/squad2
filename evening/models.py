@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 # from django.urls import reverse
 
 
@@ -19,17 +20,37 @@ class Soldiers(models.Model):
         max_length=50, null=True, verbose_name='Звання посади')
     rank = models.ForeignKey(
         'Ranks', on_delete=models.PROTECT, null=True, verbose_name='Звання')
-
-    # def get_position(self):
-    #     return self.StaffPlan_set.position_name
+    phone = models.CharField(max_length=13, null=True, verbose_name='Телефон')
+    birth_date = models.DateField(null=True, verbose_name='Дата народження')
+    tax_number = models.CharField(
+        max_length=15, unique=True, null=True, verbose_name='ІПН')
+    blood_type = models.CharField(
+        max_length=10, null=True, verbose_name='Группа крові')
+    addres = models.CharField(max_length=255, null=True, verbose_name='Адреса')
 
     def __str__(self):
         return f'{self.surname} {self.name}.{self.fathers_name}.'
+
+    def get_absolute_url(self):
+        return reverse('soldier', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Військовослужбовець'
         verbose_name_plural = 'Військовослужбовці'
         ordering = ['slug']
+
+
+# class Staffing(models.Model):
+#     """
+#     Штатний розклад
+#     """
+#     slug = models.SlugField(max_length=50, unique=True, null=True,
+#                             verbose_name='Код посади')
+#     position_name = models.CharField(
+#         max_length=50, null=True, verbose_name='Посада')
+#     mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
+#     position_rank = models.CharField(
+#         max_length=50, null=True, verbose_name='Звання посади')
 
 
 class Weapons(models.Model):
@@ -51,6 +72,8 @@ class Weapons(models.Model):
     weapon_type = models.CharField(
         max_length=50, choices=TYPES, verbose_name='Тип зброї')
     weapon_registration = models.BooleanField(default=True)
+    year_manufacture = models.DateField(
+        null=True, verbose_name='Рік виготовлення')
 
     def __str__(self):
         return self.weapon_name

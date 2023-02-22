@@ -1,5 +1,5 @@
 # from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 from . models import *
 # Create your views here.
 
@@ -7,3 +7,13 @@ from . models import *
 class SoldiersList(ListView):
     model = Soldiers
     template_name = 'evening/index.html'
+
+
+class SoldiersDetaileList(DetailView):
+    model = Soldiers
+    template_name = 'evening/soldiersdetaile.html'
+
+
+class WeaponsList(ListView):
+    model = Weapons
+    template_name = 'evening/weapons_list.html'

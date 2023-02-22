@@ -1,9 +1,9 @@
 {% extends "evening/base_generic.html" %}
 
 {% block content %}
-<h1>Штатний розклад та списочний состав</h1>
+<h2>Штатний розклад та списочний состав </h2>
 
-  <!-- <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p> -->
+  <p>кількість за штатом {{soldiers_list.count}} кількість за списком  </p>
 
 <!-- <h2>Dynamic content of the new site</h2> -->
 
@@ -15,7 +15,7 @@
   <!--   <li><strong>Authors:</strong> {{ num_authors }}</li> -->
   <!-- </ul> -->
   <!-- <ul> -->
-  <!-- {{soldiers_list}}   -->
+    
   <table>
   <tr>
     <th>код посади</th>
@@ -26,9 +26,10 @@
   </tr>
     {% for i in soldiers_list %}
   <tr>
-    <td>{{i.slug}}</td>
+    <td><a href="{}">{{i.slug}}</a></td>
+    <td><a href="{}">{{i.position_name}}</a></td>
     <td>{{i.rank}}</td>
-    <td>{{i.surname}}</td> 
+    <td><a href="">{{i.surname}}</a></td> 
     <td>{{i.name}}</td>
     <td>{{i.fathers_name}}</td>
   </tr>
