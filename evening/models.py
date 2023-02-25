@@ -30,11 +30,12 @@ class Soldiers(models.Model):
     complect_center = models.CharField(
         max_length=255, null=True, verbose_name='Центр комплектаціі')
     mob_date = models.DateField(null=True, verbose_name='Дата мобілізаціі')
-    children = models.IntegerField(default=0, verbose_name='Діти')
-    hight_s = models.IntegerField(default=0, verbose_name='Зріст')
-    size = models.IntegerField(default=0, verbose_name='Розмір')
-    boots_s = models.IntegerField(default=0, verbose_name='Взуття')
-    head_s = models.IntegerField(default=0, verbose_name='Головний убор')
+    children = models.CharField(max_length=50, null=True, verbose_name='Діти')
+    hight_s = models.CharField(max_length=50, null=True, verbose_name='Зріст')
+    size = models.CharField(max_length=50, null=True, verbose_name='Розмір')
+    boots_s = models.CharField(max_length=50, null=True, verbose_name='Взуття')
+    head_s = models.CharField(max_length=50, null=True,
+                              verbose_name='Головний убор')
 
     def __str__(self):
         return f'{self.surname} {self.name}.{self.fathers_name}.'
