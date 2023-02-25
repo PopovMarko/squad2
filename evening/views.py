@@ -9,9 +9,10 @@ class SoldiersList(ListView):
     template_name = 'evening/index.html'
 
 
-class SoldiersDetaileList(DetailView):
+class SoldierCard(DetailView):
     model = Soldiers
-    template_name = 'evening/soldiersdetaile.html'
+    template_name = 'evening/soldier_detaile.html'
+    context_object_name = 'soldiers_card'
 
 
 class WeaponsList(ListView):

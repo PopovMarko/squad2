@@ -3,11 +3,11 @@ from . models import *
 
 
 class WeaponsAdmin(admin.ModelAdmin):
-    list_display = ('weapon_type', 'weapon_name',
+    list_display = ('weapon_name',
                     'weapon_number', 'weapon_registration')
     list_display_links = ('weapon_number',)
     search_fields = ('weapon_number',),
-    list_filter = ('weapon_type',)
+    # list_filter = ('weapon_type',)
 
 
 class WeaponCardAdmin(admin.ModelAdmin):

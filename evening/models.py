@@ -27,6 +27,14 @@ class Soldiers(models.Model):
     blood_type = models.CharField(
         max_length=10, null=True, verbose_name='Группа крові')
     addres = models.CharField(max_length=255, null=True, verbose_name='Адреса')
+    complect_center = models.CharField(
+        max_length=255, null=True, verbose_name='Центр комплектаціі')
+    mob_date = models.DateField(null=True, verbose_name='Дата мобілізаціі')
+    children = models.IntegerField(default=0, verbose_name='Діти')
+    hight_s = models.IntegerField(default=0, verbose_name='Зріст')
+    size = models.IntegerField(default=0, verbose_name='Розмір')
+    boots_s = models.IntegerField(default=0, verbose_name='Взуття')
+    head_s = models.IntegerField(default=0, verbose_name='Головний убор')
 
     def __str__(self):
         return f'{self.surname} {self.name}.{self.fathers_name}.'
@@ -40,19 +48,6 @@ class Soldiers(models.Model):
         ordering = ['slug']
 
 
-# class Staffing(models.Model):
-#     """
-#     Штатний розклад
-#     """
-#     slug = models.SlugField(max_length=50, unique=True, null=True,
-#                             verbose_name='Код посади')
-#     position_name = models.CharField(
-#         max_length=50, null=True, verbose_name='Посада')
-#     mil_prof = models.CharField(max_length=50, null=True, verbose_name='ВОС')
-#     position_rank = models.CharField(
-#         max_length=50, null=True, verbose_name='Звання посади')
-
-
 class Weapons(models.Model):
     """
     Список зброї яка знаходиться в підрозділі
@@ -61,16 +56,8 @@ class Weapons(models.Model):
         max_length=50, verbose_name='Наіменування зброї')
     weapon_number = models.CharField(
         max_length=50, unique=True, verbose_name='Номер зброї')
-    TYPES = (
-        ('p', 'Пістолет'),
-        ('s', 'Стрілкова зброя'),
-        ('m', 'Кулемет ручний'),
-        ('mb', 'Кулемет великокаліберний'),
-        ('mr', 'Міномет'),
-        ('g', 'Гранатомет'),
-    )
-    weapon_type = models.CharField(
-        max_length=50, choices=TYPES, verbose_name='Тип зброї')
+    weapon_type = models.ForeignKey(
+        'WeaponsTypes', on_delete=models.PROTECT, verbose_name='Тип зброї', default=1)
     weapon_registration = models.BooleanField(default=True)
     year_manufacture = models.DateField(
         null=True, verbose_name='Рік виготовлення')
@@ -79,9 +66,16 @@ class Weapons(models.Model):
         return self.weapon_name
 
     class Meta:
+        """
+        class Meta
+        """
         verbose_name = 'Зброя підрозділу'
         verbose_name_plural = 'Зброя підрозділу'
-        ordering = ['weapon_type', 'weapon_name']
+        ordering = ['id']
+
+
+class WeaponsTypes(models.Model):
+    w_type = models.CharField(max_length=50)
 
 
 class WeaponCard(models.Model):

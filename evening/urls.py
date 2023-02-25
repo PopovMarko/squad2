@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from evening.views import SoldiersList, WeaponsList
+from evening.views import SoldiersList, WeaponsList, SoldierCard
 
 urlpatterns = [
     path('', SoldiersList.as_view(), name='index'),
-    # path('detaile', SoldiersDetaileList.as_view(), name='detaile_view_list'),
     path('weapons/', WeaponsList.as_view(), name='weapons'),
+    path('soldier_card/<int:pk>', SoldierCard.as_view(), name='soldier_card'),
 ]

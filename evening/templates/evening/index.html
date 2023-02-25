@@ -15,23 +15,45 @@
   <!--   <li><strong>Authors:</strong> {{ num_authors }}</li> -->
   <!-- </ul> -->
   <!-- <ul> -->
-    
-  <table>
+  
+  <style type="text/css">
+    TABLE {
+      <!-- width: 300px; /* Ширина таблицы */ -->
+      border: 2px solid black; /* Рамка вокруг таблицы */
+      }
+    TD, TH {
+      padding: 3px; /* Поля вокруг содержимого ячеек */
+      border: 1px solid black; /* Рамка вокруг таблицы */
+      }
+    TH {
+      text-align: left; /* Выравнивание по левому краю */
+      background: black; /* Цвет фона */
+      color: white; /* Цвет текста */
+      }
+  </style>
+  <table cellspacing = 1>
   <tr>
-    <th>код посади</th>
+    <th>ВОС</th>
+    <th>Посада</th>
     <th>Звання</th>
     <th>Прізвище</th> 
     <th>Імʼя</th>
     <th>По батькові</th>
+    <th>Позивний</th>
+    <th>Телефон</th>
+    <th>Дата народження</th>
   </tr>
     {% for i in soldiers_list %}
   <tr>
-    <td><a href="{}">{{i.slug}}</a></td>
+    <td><a href="{}">{{i.mil_prof}}</a></td>
     <td><a href="{}">{{i.position_name}}</a></td>
     <td>{{i.rank}}</td>
-    <td><a href="">{{i.surname}}</a></td> 
+    <td><a href="{%url 'soldier_card' i.id  %}">{{i.surname}}</a></td> 
     <td>{{i.name}}</td>
     <td>{{i.fathers_name}}</td>
+    <td>{{i.callsign}}</td>
+    <td>{{i.phone}}</td>
+    <td>{{i.birth_date|date:" d M Y"}}</td>
   </tr>
     {% endfor %}
 </table>
