@@ -5,17 +5,6 @@
 
   <p>кількість за штатом {{soldiers_list.count}} кількість за списком  </p>
 
-<!-- <h2>Dynamic content of the new site</h2> -->
-
-  <!-- <p>The library has the following record counts:</p> -->
-  <!-- <ul> -->
-  <!--   <li><strong>Books:</strong> {{ SoldiersList.name}}</li> -->
-  <!--   <li><strong>Copies:</strong> {{ num_instances }}</li> -->
-  <!--   <li><strong>Copies available:</strong> {{ num_instances_available }}</li> -->
-  <!--   <li><strong>Authors:</strong> {{ num_authors }}</li> -->
-  <!-- </ul> -->
-  <!-- <ul> -->
-  
   <style type="text/css">
     TABLE {
       <!-- width: 300px; /* Ширина таблицы */ -->
@@ -45,10 +34,10 @@
   </tr>
     {% for i in soldiers_list %}
   <tr>
-    <td><a href="{}">{{i.mil_prof}}</a></td>
-    <td><a href="{}">{{i.position_name}}</a></td>
+    <td>{{i.mil_prof}}</a></td>
+    <td>{{i.position_name}}</a></td>
     <td>{{i.rank}}</td>
-    <td><a href="{%url 'soldier_card' i.id  %}">{{i.surname}}</a></td> 
+    <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td> 
     <td>{{i.name}}</td>
     <td>{{i.fathers_name}}</td>
     <td>{{i.callsign}}</td>

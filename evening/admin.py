@@ -10,11 +10,6 @@ class WeaponsAdmin(admin.ModelAdmin):
     # list_filter = ('weapon_type',)
 
 
-class WeaponCardAdmin(admin.ModelAdmin):
-    list_display = ('soldier', 'weapon')
-    list_filter = ('soldier',)
-
-
 class SoldiersAdmin(admin.ModelAdmin):
     list_display = ('slug', 'position_name', 'surname', 'name',
                     'fathers_name', 'callsign', 'rank')
@@ -24,4 +19,3 @@ class SoldiersAdmin(admin.ModelAdmin):
 
 admin.site.register(Soldiers, SoldiersAdmin)
 admin.site.register(Weapons, WeaponsAdmin)
-admin.site.register(WeaponCard, WeaponCardAdmin)

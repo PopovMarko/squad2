@@ -38,10 +38,13 @@ class Soldiers(models.Model):
                               verbose_name='Головний убор')
 
     def __str__(self):
-        return f'{self.surname} {self.name}.{self.fathers_name}.'
+        return f'{self.surname}  {self.name}  {self.fathers_name}'
 
     def get_absolute_url(self):
-        return reverse('soldier', kwargs={'pk': self.pk})
+        return reverse('soldier-card', args=[str(self.pk)])
+
+    def get_weapons(self):
+        pass
 
     class Meta:
         verbose_name = 'Військовослужбовець'
@@ -62,6 +65,8 @@ class Weapons(models.Model):
     weapon_registration = models.BooleanField(default=True)
     year_manufacture = models.DateField(
         null=True, verbose_name='Рік виготовлення')
+    soldier_ref = models.ForeignKey(
+        'Soldiers', on_delete=models.PROTECT, blank=True, null=True, verbose_name='Закріплено')
 
     def __str__(self):
         return self.weapon_name
@@ -72,31 +77,11 @@ class Weapons(models.Model):
         """
         verbose_name = 'Зброя підрозділу'
         verbose_name_plural = 'Зброя підрозділу'
-        ordering = ['id']
+        ordering = ['weapon_type', 'weapon_name']
 
 
 class WeaponsTypes(models.Model):
     w_type = models.CharField(max_length=50)
-
-
-class WeaponCard(models.Model):
-    """
-    Картка закріпленної зборої за військовослужбовцем 
-    """
-    soldier = models.ForeignKey(
-        'Soldiers', on_delete=models.PROTECT, verbose_name='Військовослужбовець'
-    )
-    weapon = models.OneToOneField(
-        'Weapons', on_delete=models.PROTECT, unique=True,  verbose_name='Закріплена зброя'
-    )
-
-    def __str__(self):
-        return self.soldier.surname
-
-    class Meta:
-        verbose_name = 'Картка зброї військовослужбовця'
-        verbose_name_plural = 'Картки зброї військовослужбовців'
-        ordering = ['soldier']
 
 
 class Ranks (models.Model):
