@@ -4,7 +4,7 @@ from . models import *
 
 class WeaponsAdmin(admin.ModelAdmin):
     list_display = ('weapon_name',
-                    'weapon_number', 'weapon_registration')
+                    'weapon_number', 'soldier_ref', 'weapon_registration')
     list_display_links = ('weapon_number',)
     search_fields = ('weapon_number',),
     # list_filter = ('weapon_type',)

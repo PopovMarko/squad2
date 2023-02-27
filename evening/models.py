@@ -36,6 +36,7 @@ class Soldiers(models.Model):
     boots_s = models.CharField(max_length=50, null=True, verbose_name='Взуття')
     head_s = models.CharField(max_length=50, null=True,
                               verbose_name='Головний убор')
+    photo = models.ImageField(blank=True,)
 
     def __str__(self):
         return f'{self.surname}  {self.name}  {self.fathers_name}'
@@ -67,6 +68,7 @@ class Weapons(models.Model):
         null=True, verbose_name='Рік виготовлення')
     soldier_ref = models.ForeignKey(
         'Soldiers', on_delete=models.PROTECT, blank=True, null=True, verbose_name='Закріплено')
+    # date_ref = models.DateField(null=True, verbose_name='Дата закріплення')
 
     def __str__(self):
         return self.weapon_name

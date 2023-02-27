@@ -1,0 +1,27 @@
+{% extends "evening/base_generic.html" %}
+
+{% block content %}
+<style>
+  .variable {
+    display: flex;
+    /* установить flexbox для элементов */
+    /* равномерно распределить пространство между элементами */
+    margin-bottom: 10px;
+    /* добавить отступ снизу */
+    padding: 10px;
+  }
+
+  .variable span {
+    margin-right: 10px;
+    /* добавить отступ между элементами */
+  }
+</style>
+<h3>
+  <div class="variable">
+    <span>{{soldiers_card.position_name}}</span>
+    <span>{{soldiers_card.rank}}</span>
+    <span>{{soldiers_card}}</span>
+  </div>
+</h3>
+
+{% endblock %}
