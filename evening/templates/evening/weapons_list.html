@@ -20,21 +20,21 @@
   <table cellspacing = 1>
 <table>
   <tr>
-    <th>Тип зброї</th>
+    <th>Тип озброєння</th>
     <th>Найменування</th>
-    <th>Номер</th>
-    <th>Рік виготовлення</th>
+    <th>Номер</th> 
+    <th>Рік виробництва</th>
     <th>Закріплено</th>
-    <th>Рєєстрація</th>
+    <th>Регістр</th>
   </tr>
-  {% for w in weapons_list %}
+    {% for w in weapons_list %}
   <tr>
     <td>{{w.weapon_type.w_type}}</a></td>
-    <td>{{w.weapon_name}}</td>
-    <td><a href="{}">{{w.weapon_number}}</td>
-    <td>{{w.year_manufacture|date:"Y"}}</td>
+    <td>{{w.weapon_name}}</a></td>
+    <td>{{w.weapon_number}}</td>
+    <td><a href="{}">{{w.year_manufacture|date:"Y"}}</a></td> 
     <td>{{w.soldier_ref}}</td>
-    <td>{{w.registration}}</td>
+    <td>{{w.register}}</td>
   </tr>
   {% endfor %}
 </table>

@@ -1,7 +1,6 @@
 # from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from . models import *
-# Create your views here.
 
 
 class SoldiersList(ListView):
@@ -18,3 +17,8 @@ class SoldiersCard(DetailView):
     model = Soldiers
     template_name = 'evening/soldiers_detail.html'
     context_object_name = 'soldiers_card'
+
+
+class AmmoList(ListView):
+    model = Ammo
+    template_name = 'evening/ammo_list.html'

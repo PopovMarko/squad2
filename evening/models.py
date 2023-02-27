@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-# from django.urls import reverse
 
 
 class Soldiers(models.Model):
@@ -49,10 +48,20 @@ class Soldiers(models.Model):
     def get_weapons(self):
         pass
 
+    def get_quantity(self):
+        pass
+
     class Meta:
         verbose_name = 'Військовослужбовець'
         verbose_name_plural = 'Військовослужбовці'
         ordering = ['slug']
+
+
+class Ranks (models.Model):
+    rank = models.CharField(max_length=50,)
+
+    def __str__(self):
+        return self.rank
 
 
 class Weapons(models.Model):
@@ -88,8 +97,16 @@ class WeaponsTypes(models.Model):
     w_type = models.CharField(max_length=50)
 
 
-class Ranks (models.Model):
-    rank = models.CharField(max_length=50,)
+class Ammo(models.Model):
+    """
+    Список боєприпасів підрозділу
+    """
+    ammo_name = models.CharField(max_length=255, verbose_name='Найменування')
+    caliber = models.CharField(max_length=255, verbose_name='Калібр')
+    ammo_type = models.CharField(max_length=255, verbose_name='Маркування')
+    quantity = models.IntegerField(verbose_name='Кількість')
 
-    def __str__(self):
-        return self.rank
+    class Meta:
+        verbose_name = 'Боєкомплект підрозділу'
+        verbose_name_plural = 'Боєкомплект підрозділу'
+        ordering = ['quantity']

@@ -1,0 +1,47 @@
+{% extends "evening/base_generic.html" %}
+
+{% block content %}
+<h2>Боєкомплект підрозділу</h2>
+
+<style type="text/css">
+  TABLE {
+    < !-- width: 300px;
+    /* Ширина таблицы */
+    -->border: 2px solid black;
+    /* Рамка вокруг таблицы */
+  }
+
+  TD,
+  TH {
+    padding: 3px;
+    /* Поля вокруг содержимого ячеек */
+    border: 1px solid black;
+    /* Рамка вокруг таблицы */
+  }
+
+  TH {
+    text-align: left;
+    /* Выравнивание по левому краю */
+    background: black;
+    /* Цвет фона */
+    color: white;
+    /* Цвет текста */
+  }
+</style>
+<table cellspacing=1>
+  <tr>
+    <th>Найменування</th>
+    <th>Калібр</th>
+    <th>Маркування</th>
+    <th>Кількість</th>
+  </tr>
+  {% for a in ammo_list %}
+  <tr>
+    <td>{{a.ammo_name}}</a></td>
+    <td>{{a.caliber}}</td>
+    <td><a href="{}">{{a.ammo_type}}</td>
+    <td>{{a.quantity}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

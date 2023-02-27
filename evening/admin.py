@@ -17,5 +17,10 @@ class SoldiersAdmin(admin.ModelAdmin):
     search_fields = ('surname', 'callsign')
 
 
+class AmmoAdmin(admin.ModelAdmin):
+    list_display = ('ammo_name', 'caliber', 'ammo_type', 'quantity')
+
+
 admin.site.register(Soldiers, SoldiersAdmin)
 admin.site.register(Weapons, WeaponsAdmin)
+admin.site.register(Ammo, AmmoAdmin)
