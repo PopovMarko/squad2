@@ -25,7 +25,7 @@ class Soldiers(models.Model):
     tax_number = models.CharField(
         max_length=15, unique=True, null=True, verbose_name='ІПН')
     blood_type = models.CharField(
-        max_length=10, null=True, verbose_name='Группа крові')
+        max_length=15, null=True, verbose_name='Группа крові')
     addres = models.CharField(max_length=255, null=True, verbose_name='Адреса')
     complect_center = models.CharField(
         max_length=255, null=True, verbose_name='Центр комплектаціі')
@@ -36,7 +36,9 @@ class Soldiers(models.Model):
     boots_s = models.CharField(max_length=50, null=True, verbose_name='Взуття')
     head_s = models.CharField(max_length=50, null=True,
                               verbose_name='Головний убор')
-    photo = models.ImageField(blank=True,)
+    photo = models.ImageField(blank=True, verbose_name='Фото')
+    passport = models.CharField(
+        max_length=50, blank=True, verbose_name='Паспорт')
 
     def __str__(self):
         return f'{self.surname}  {self.name}  {self.fathers_name}'
