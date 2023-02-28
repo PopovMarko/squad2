@@ -45,12 +45,6 @@ class Soldiers(models.Model):
     def get_absolute_url(self):
         return reverse('soldier-card', args=[str(self.pk)])
 
-    def get_weapons(self):
-        pass
-
-    def get_quantity(self):
-        pass
-
     class Meta:
         verbose_name = 'Військовослужбовець'
         verbose_name_plural = 'Військовослужбовці'
@@ -83,6 +77,9 @@ class Weapons(models.Model):
 
     def __str__(self):
         return self.weapon_name
+
+    def get_weapons_quantity(self):
+        pass
 
     class Meta:
         """

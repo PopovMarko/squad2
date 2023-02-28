@@ -7,6 +7,12 @@ class SoldiersList(ListView):
     model = Soldiers
     template_name = 'evening/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cont = Soldiers.objects.exclude(surname='').count()
+        context['cont'] = cont
+        return context
+
 
 class WeaponsList(ListView):
     model = Weapons

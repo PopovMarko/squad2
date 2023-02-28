@@ -1,27 +1,78 @@
 {% extends "evening/base_generic.html" %}
 
 {% block content %}
-<style>
-  .variable {
-    display: flex;
-    /* установить flexbox для элементов */
-    /* равномерно распределить пространство между элементами */
-    margin-bottom: 10px;
-    /* добавить отступ снизу */
-    padding: 10px;
-  }
-
-  .variable span {
-    margin-right: 10px;
-    /* добавить отступ между элементами */
-  }
-</style>
-<h3>
+<!-- <style> -->
+<!--   .variable { -->
+<!--     display: flex; -->
+<!--     /* установить flexbox для элементов */ -->
+<!--     /* равномерно распределить пространство между элементами */ -->
+<!--     margin-bottom: 10px; -->
+<!--     /* добавить отступ снизу */ -->
+<!--     padding: 5px; -->
+<!--   } -->
+<!---->
+<!--   .variable span { -->
+<!--     margin-right: 20px; -->
+<!--     /* добавить отступ между элементами */ -->
+<!--   } -->
+<!-- </style> -->
+  <style type="text/css">
+    TABLE {
+      <!-- width: 300px; /* Ширина таблицы */ -->
+      border: 2px solid black; /* Рамка вокруг таблицы */
+      }
+    TD, TH {
+      padding: 3px; /* Поля вокруг содержимого ячеек */
+      border: 1px solid black; /* Рамка вокруг таблицы */
+      }
+    TH {
+      text-align: left; /* Выравнивание по левому краю */
+      background: black; /* Цвет фона */
+      color: white; /* Цвет текста */
+      }
+  </style>
+<h4>
   <div class="variable">
     <span>{{soldiers_card.position_name}}</span>
     <span>{{soldiers_card.rank}}</span>
     <span>{{soldiers_card}}</span>
+    <span>({{soldiers_card.callsign}})</span>
   </div>
-</h3>
+</h4>
+  <table cellspacing = 1>
+  <tr>
+    <th>ВОС</th>
+    <th>Посада</th>
+    <th>Звання</th>
+    <th>Прізвище</th> 
+    <th>Імʼя</th>
+    <th>По батькові</th>
+    <th>Позивний</th>
+    <th>Телефон</th>
+    <th>Дата народження</th>
+  </tr>
+    {% for i in soldiers_list %}
+  <tr>
+    <td>{{i.mil_prof}}</a></td>
+    <td>{{i.position_name}}</a></td>
+    <td>{{i.rank}}</td>
+    <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td> 
+    <td>{{i.name}}</td>
+    <td>{{i.fathers_name}}</td>
+    <td>{{i.callsign}}</td>
+    <td>{{i.phone}}</td>
+    <td>{{i.birth_date|date:" d-m-Y"}}</td>
+  </tr>
+    {% endfor %}
+</table>
+{
 
+<h4>Закріплена зброя</h4>
+  {% for w in soldiers_card.weapons_set.all %}
+<div class="variable">
+    <span>{{w.weapon_name}}</span>
+    <span>{{w.weapon_number}}</span>
+</div>
+
+  {% endfor %}
 {% endblock %}
