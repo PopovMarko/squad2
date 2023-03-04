@@ -1,0 +1,12 @@
+{% extends "evening/base_generic.html" %} {% block content %}
+
+<head> </head>
+<h2>Редагування картки військовослужбовця</h2>
+
+<p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}}</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

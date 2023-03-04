@@ -1,41 +1,33 @@
 {% extends "evening/base_generic.html" %} 
 {% block content %}
-<h2>Список зброї підрозділу</h2>
+<h2>Зброя підрозділу</h2>
 
-  <style type="text/css">
-    TABLE {
-      <!-- width: 300px; /* Ширина таблицы */ -->
-      border: 2px solid black; /* Рамка вокруг таблицы */
-      }
-    TD, TH {
-      padding: 3px; /* Поля вокруг содержимого ячеек */
-      border: 1px solid black; /* Рамка вокруг таблицы */
-      }
-    TH {
-      text-align: left; /* Выравнивание по левому краю */
-      background: black; /* Цвет фона */
-      color: white; /* Цвет текста */
-      }
-  </style>
-  <table cellspacing = 1>
-<table>
-  <tr>
-    <th>Тип озброєння</th>
-    <th>Найменування</th>
-    <th>Номер</th> 
-    <th>Рік виробництва</th>
-    <th>Закріплено</th>
-    <th>Регістр</th>
-  </tr>
+<p>кількість загалом {{soldiers_list.count}} кількість за списком {{cont}} </p>
+
+<table class="table table-striped">
+   <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Тип озброєння</th>
+        <th scope="col">Найменування</th>
+        <th scope="col">Номер</th>
+        <th scope="col">Рік виробництва</th>
+        <th scope="col">Закріплено</th>
+        <th scope="col">Регістр</th>
+      </tr>
+   </thead>
+   <tbody>
     {% for w in weapons_list %}
-  <tr>
-    <td>{{w.weapon_type.w_type}}</a></td>
-    <td>{{w.weapon_name}}</a></td>
-    <td>{{w.weapon_number}}</td>
-    <td><a href="{}">{{w.year_manufacture|date:"Y"}}</a></td> 
-    <td>{{w.soldier_ref}}</td>
-    <td>{{w.register}}</td>
-  </tr>
-  {% endfor %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{w.weapon_type.w_type}}</td>
+        <td>{{w.weapon_name}}</td>
+        <td>{{w.weapon_number}}</td>
+        <td><a href="{}">{{w.year_manufacture|date:"Y"}}</td> 
+        <td>{{w.soldier_ref}}</td>
+        <td>{{w.register}}</td>
+      </tr>
+    {% endfor %}
+   </tbody>
 </table>
 {% endblock %}

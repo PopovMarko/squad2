@@ -1,6 +1,8 @@
 # from django.shortcuts import render
 from django.views.generic import DetailView, ListView
-from . models import *
+from django.views.generic.edit import FormView
+from .models import *
+from .forms import *
 
 
 class SoldiersList(ListView):
@@ -14,17 +16,27 @@ class SoldiersList(ListView):
         return context
 
 
-class WeaponsList(ListView):
-    model = Weapons
-    template_name = 'evening/weapons_list.html'
-
-
 class SoldiersCard(DetailView):
     model = Soldiers
     template_name = 'evening/soldiers_detail.html'
     context_object_name = 'soldiers_card'
 
 
+class SoldierCardRenew(FormView):
+    template_name = 'evening/soldier_renew.html'
+    form_class = SoldierAddForm
+
+
+class WeaponsList(ListView):
+    model = Weapons
+    template_name = 'evening/weapons_list.html'
+
+
 class AmmoList(ListView):
     model = Ammo
     template_name = 'evening/ammo_list.html'
+
+
+class Test(ListView):
+    model = Soldiers
+    template_name = 'evening/test.html'

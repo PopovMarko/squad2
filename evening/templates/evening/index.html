@@ -1,49 +1,42 @@
 {% extends "evening/base_generic.html" %}
 
 {% block content %}
-<h2>Штатний розклад та списочний состав </h2>
+<head>
+</head>
+<h2>Штатний розклад та списочний склад підрозділу</h2>
 
 <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
 
-  <style type="text/css">
-    TABLE {
-      <!-- width: 300px; /* Ширина таблицы */ -->
-      border: 2px solid black; /* Рамка вокруг таблицы */
-      }
-    TD, TH {
-      padding: 3px; /* Поля вокруг содержимого ячеек */
-      border: 1px solid black; /* Рамка вокруг таблицы */
-      }
-    TH {
-      text-align: left; /* Выравнивание по левому краю */
-      background: black; /* Цвет фона */
-      color: white; /* Цвет текста */
-      }
-  </style>
-  <table cellspacing = 1>
-  <tr>
-    <th>ВОС</th>
-    <th>Посада</th>
-    <th>Звання</th>
-    <th>Прізвище</th> 
-    <th>Імʼя</th>
-    <th>По батькові</th>
-    <th>Позивний</th>
-    <th>Телефон</th>
-    <th>Дата народження</th>
-  </tr>
+<table class="table table-striped">
+   <thead style="position: sticky;top: 0" class="thead-dark">
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">ВОС</th>
+        <th scope="col">Посада</th>
+        <th scope="col">Звання</th>
+        <th scope="col">Призвіще</th>
+        <th scope="col">Імʼя</th>
+        <th scope="col">По батькові</th>
+        <th scope="col">Позивний</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">Дата народження</th>
+      </tr>
+   </thead>
+   <tbody>
     {% for i in soldiers_list %}
-  <tr>
-    <td>{{i.mil_prof}}</a></td>
-    <td>{{i.position_name}}</a></td>
-    <td>{{i.rank}}</td>
-    <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td> 
-    <td>{{i.name}}</td>
-    <td>{{i.fathers_name}}</td>
-    <td>{{i.callsign}}</td>
-    <td>{{i.phone}}</td>
-    <td>{{i.birth_date|date:" d-m-Y"}}</td>
-  </tr>
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.mil_prof}}</a></td>
+        <td>{{i.position_name}}</a></td>
+        <td>{{i.rank}}</td>
+        <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td> 
+        <td>{{i.name}}</td>
+        <td>{{i.fathers_name}}</td>
+        <td>{{i.callsign}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.birth_date|date:" d-m-Y"}}</td>
+      </tr>
     {% endfor %}
+   </tbody>
 </table>
 {% endblock %}
