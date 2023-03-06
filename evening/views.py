@@ -1,6 +1,6 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.views.generic import DetailView, ListView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from .models import *
 from .forms import *
 
@@ -22,9 +22,18 @@ class SoldiersCard(DetailView):
     context_object_name = 'soldiers_card'
 
 
-class SoldierCardRenew(FormView):
+class SoldierCardRenew(UpdateView):
+    model = Soldiers
     template_name = 'evening/soldier_renew.html'
     form_class = SoldierAddForm
+
+    def get_success_url(self):
+        return reverse('index')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['instance'] = self.get_object()
+        return kwargs
 
 
 class WeaponsList(ListView):

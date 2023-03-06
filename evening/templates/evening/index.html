@@ -3,40 +3,43 @@
 {% block content %}
 <head>
 </head>
-<h2>Штатний розклад та списочний склад підрозділу</h2>
+<div class="container">
+    <h2>Штатний розклад та списочний склад підрозділу</h2>
+    <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
+    <table class="table table-striped">
+       <thead  class="thead-dark">
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">ВОС</th>
+            <th scope="col">Посада</th>
+            <th scope="col">Звання</th>
+            <th scope="col">Призвіще</th>
+            <th scope="col">Імʼя</th>
+            <th scope="col">По батькові</th>
+            <th scope="col">Позивний</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Дата народження</th>
+              <th scope="col">Адреса</th>
 
-<p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
-
-<table class="table table-striped">
-   <thead style="position: sticky;top: 0" class="thead-dark">
-      <tr>
-        <th scope="col">№</th>
-        <th scope="col">ВОС</th>
-        <th scope="col">Посада</th>
-        <th scope="col">Звання</th>
-        <th scope="col">Призвіще</th>
-        <th scope="col">Імʼя</th>
-        <th scope="col">По батькові</th>
-        <th scope="col">Позивний</th>
-        <th scope="col">Телефон</th>
-        <th scope="col">Дата народження</th>
-      </tr>
-   </thead>
-   <tbody>
-    {% for i in soldiers_list %}
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{i.mil_prof}}</a></td>
-        <td>{{i.position_name}}</a></td>
-        <td>{{i.rank}}</td>
-        <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td> 
-        <td>{{i.name}}</td>
-        <td>{{i.fathers_name}}</td>
-        <td>{{i.callsign}}</td>
-        <td>{{i.phone}}</td>
-        <td>{{i.birth_date|date:" d-m-Y"}}</td>
-      </tr>
-    {% endfor %}
-   </tbody>
-</table>
-{% endblock %}
+          </tr>
+       </thead>
+       <tbody>
+        {% for i in soldiers_list %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.mil_prof}}</a></td>
+            <td>{{i.position_name}}</a></td>
+            <td>{{i.rank}}</td>
+            <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td>
+            <td>{{i.name}}</td>
+            <td>{{i.fathers_name}}</td>
+            <td>{{i.callsign}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.birth_date|date:" d-m-Y"}}</td>
+              <td>{{i.addres}}</td>
+          </tr>
+        {% endfor %}
+       </tbody>
+    </table>
+</div>
+{% endblock %} 

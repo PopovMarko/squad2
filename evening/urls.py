@@ -21,7 +21,7 @@ from evening.views import *
 urlpatterns = [
     path('', SoldiersList.as_view(), name='index'),
     path('weapons/', WeaponsList.as_view(), name='weapons'),
-    path('soldiers_card/<pk>/',
+    path('soldiers_card/<pk>',
          SoldiersCard.as_view(), name='soldier-card'),
     path('ammo/', AmmoList.as_view(), name='ammo'),
     path('soldiers_card/<pk>/renew/',
