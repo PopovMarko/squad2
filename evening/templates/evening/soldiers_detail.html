@@ -1,22 +1,64 @@
 {% extends "evening/base_generic.html" %}
 
 {% block content %}
-<h4>
-  <div class="variable">
-    <span>{{soldiers_card.position_name}}</span>
-    <span>{{soldiers_card.rank}}</span>
-    <span>{{soldiers_card}}</span>
-    <span>({{soldiers_card.callsign}})</span>
-    <span><a href="/index/soldiers_card/{{soldiers_card.pk}}/renew/">Редагувати</a></span>
-  </div>
-</h4>
 
-<div class="">
-  <span>Закріплена зброя</span>
-  {% for w in soldiers_card.weapons_set.all %}
-    <span>{{w.weapon_name}}</span>
-    <span>{{w.weapon_number}}</span>
-</div>
+<head></head>
 
-  {% endfor %}
+<div class="container" style="padding-top:10px">
+  <span><h3 style="display:inline-block">Ососбова картка війсковослужбовця</h3>    
+    <a href={% url "soldier-card-update" soldiers_card.id %} class="btn btn-primary" style="float:right">Редагувати</a></span>
+  <h4>{{soldiers_card.rank}} {{soldiers_card}} ({{soldiers_card.callsign}})</h4>
+  <hr size=4>
+  <section class="section" style="font-size:14px">
+    <div class="row">
+        <div class="col-lg-4"> 
+              <dl class = "dl-horizontal">
+                <dt>Код посади</dt>
+                <dd>- {{soldiers_card.slug}}</dd>
+                <dt>ВОС</dt>
+                <dd>- {{soldiers_card.mil_prof}}</dd>
+                <dt>Посада</dt>
+                <dd>- {{soldiers_card.position_name}}</dd>
+                <dt>Звання посади</dt>
+                <dd>- {{soldiers_card.position_rank}}</dd>
+                <dt>Дата народження</dt>
+                <dd>- {{soldiers_card.birth_date}}</dd>
+                <dt>Паспорт</dt>
+                <dd>- {{soldiers_card.passport}}</dd>
+                <dt>ІПН</dt>
+                <dd>- {{soldiers_card.tax_number}}</dd>
+                <dt>Адреса</dt>
+                <dd>- {{soldiers_card.addres}}</dd>
+              </dl>     
+          </div>
+        <div class="col-lg-4"> 
+              <dl class = "dl-horizontal">
+                <dt>Телефон</dt>
+                <dd>- {{soldiers_card.phone}}</dd>
+                <dt>Группа крові</dt>
+                <dd>- {{soldiers_card.blood_type}}</dd>
+                <dt>Дата мобілізаціі</dt>
+                <dd>- {{soldiers_card.mob_date}}</dd>
+                <dt>Діти</dt>
+                <dd>- {{soldiers_card.children}}</dd>
+                <dt>Розмір</dt>
+                <dd>- {{soldiers_card.size}}</dd>
+                <dt>Взуття</dt>
+                <dd>- {{soldiers_card.boots_s}}</dd>
+                <dt>Головний убор</dt>
+                <dd>- {{soldiers_card.head_s}}</dd>
+                <dt>Зріст</dt>
+                <dd>- {{soldiers_card.hight_s}}</dd>
+              </dl>     
+          </div>
+        <div class="col-lg-4"> 
+              <h5>Закріплена зброя</h5>    
+              <dl class = "dl-horizontal">
+              {% for w in soldiers_card.weapons_set.all %}
+                <dt>{{w.weapon_name}}
+                <dd>- {{w.weapon_number}}
+              {% endfor %}
+        </div>
+    </div>
+  </section>
 {% endblock %}

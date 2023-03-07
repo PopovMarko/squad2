@@ -1,3 +1,7 @@
+html * {
+  font-size: 14px;
+}
+
 .container navbar {
   width: 105%;
   padding: 0;

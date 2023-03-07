@@ -24,7 +24,7 @@ urlpatterns = [
     path('soldiers_card/<pk>',
          SoldiersCard.as_view(), name='soldier-card'),
     path('ammo/', AmmoList.as_view(), name='ammo'),
-    path('soldiers_card/<pk>/renew/',
-         SoldierCardRenew.as_view(), name='soldier-card-renew'),
+    path('soldiers_card/<pk>/update/',
+         SoldierCardRenew.as_view(), name='soldier-card-update'),
     path('test/', Test.as_view(), name='tt'),
 ]
