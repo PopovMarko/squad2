@@ -7,6 +7,10 @@ class SoldierAddForm (forms.ModelForm):
     class Meta:
         model = Soldiers
         fields = '__all__'
-        widgets = {
-            'rank': forms.Select(attrs={'class': 'form-control'}),
-        }
+
+
+class WeaponsUpdateForm (forms.ModelForm):
+
+    class Meta:
+        model = Weapons
+        fields = '__all__'

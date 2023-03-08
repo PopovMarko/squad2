@@ -1,6 +1,6 @@
-html * {
-  font-size: 14px;
-}
+/* html * { */
+/*   font-size: 14px; */
+/* } */
 
 .container navbar {
   width: 105%;
@@ -13,4 +13,8 @@ html * {
   font-size: 14px;
   margin: 0;
   padding: 0;
+}
+
+.row {
+  font-size: 14px;
 }

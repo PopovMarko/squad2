@@ -41,6 +41,17 @@ class WeaponsList(ListView):
     template_name = 'evening/weapons_list.html'
 
 
+class WeaponsDetaile(UpdateView):
+    model = Weapons
+    template_name = 'evening/weapons_update.html'
+    form_class = WeaponsUpdateForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['instance'] = self.get_object()
+        return kwargs
+
+
 class AmmoList(ListView):
     model = Ammo
     template_name = 'evening/ammo_list.html'

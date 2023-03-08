@@ -90,6 +90,9 @@ class Weapons(models.Model):
     def __str__(self):
         return self.weapon_name
 
+    def get_absolute_url(self):
+        return reverse("weapons_detaile", args=[str(self.pk)])
+
     def get_weapons_quantity(self):
         pass
 

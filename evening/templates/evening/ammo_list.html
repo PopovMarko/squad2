@@ -1,37 +1,31 @@
 {% extends "evening/base_generic.html" %}
 {% block content %}
 <head>
-<style>
-        .header{
-                position:sticky;
-                top:0;
-        }
-</style>
 </head>
-<h2>Боєприпаси підрозділу</h2>
-
-<p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
-
-<table class="table table-striped">
-   <thead>
-      <tr>
-        <th class = header scope="col">№</th>
-        <th class = header scope="col">Найменування</th>
-        <th class = header scope="col">Калібр</th>
-        <th class = header scope="col">Маркування</th>
-        <th class = header scope="col">Кількість</th>
-      </tr>
-   </thead>
-   <tbody>
-    {% for a in ammo_list %}
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{a.ammo_name}}</td>
-        <td>{{a.caliber}}</td>
-        <td><a href="{}">{{a.ammo_type}}</td>
-        <td>{{a.quantity}}</td>
-      </tr>
-    {% endfor %}
-   </tbody>
-</table>
+<div class="container">
+    <h2>Боєкомплект підрозділу</h2>
+    <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
+  <table class="table table-striped">
+     <thead>
+        <tr>
+          <th class = header scope="col">№</th>
+          <th class = header scope="col">Найменування</th>
+          <th class = header scope="col">Калібр</th>
+          <th class = header scope="col">Маркування</th>
+          <th class = header scope="col">Кількість</th>
+        </tr>
+     </thead>
+     <tbody>
+      {% for a in ammo_list %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{a.ammo_name}}</td>
+          <td>{{a.caliber}}</td>
+          <td><a href="{}">{{a.ammo_type}}</td>
+          <td>{{a.quantity}}</td>
+        </tr>
+      {% endfor %}
+     </tbody>
+  </table>
+</div>
 {% endblock %}
