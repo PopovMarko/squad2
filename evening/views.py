@@ -30,10 +30,10 @@ class SoldierCardRenew(UpdateView):
     def get_success_url(self):
         return reverse('index')
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['instance'] = self.get_object()
-        return kwargs
+    # def get_form_kwargs(self):
+    #     kwargs = super().get_form_kwargs()
+    #     kwargs['instance'] = self.get_object()
+    #     return kwargs
 
 
 class WeaponsList(ListView):

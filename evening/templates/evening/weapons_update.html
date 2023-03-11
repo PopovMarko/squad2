@@ -1,3 +1,15 @@
 {% extends 'evening/base_generic.html' %}
 {% block content %}
+
+<head> </head>
+<div class="container">
+  <h3>Редагування картки зброї</h3>
+  <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}}</p>
+  <form class="form-group" class="form_control">
+    <table class="table table-sm">
+      {{form.as_table}}
+    </table>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+  </form>
+</div>
 {% endblock %}

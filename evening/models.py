@@ -69,7 +69,6 @@ class Ranks (models.Model):
     def __str__(self):
         return self.rank
 
-
 class Weapons(models.Model):
     """
     Список зброї яка знаходиться в підрозділі
@@ -107,6 +106,9 @@ class Weapons(models.Model):
 
 class WeaponsTypes(models.Model):
     w_type = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.w_type
 
 
 class Ammo(models.Model):
@@ -122,3 +124,6 @@ class Ammo(models.Model):
         verbose_name = 'Боєкомплект підрозділу'
         verbose_name_plural = 'Боєкомплект підрозділу'
         ordering = ['quantity']
+
+    def __str__(self):
+        return f'{self.caliber} {self.ammo_type}'
