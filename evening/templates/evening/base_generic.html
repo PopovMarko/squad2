@@ -3,11 +3,11 @@
 {% load static %}
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>239 ОБТро</title>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>239 ОБТро</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 </head>
 
 <body>
@@ -25,13 +25,16 @@
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Особовий склад</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'weapons' %}">Зброя підрозділу</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'staff_list' %}">Штатний розклад</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'ammo' %}">Боєкомплект підрозлділу</a>
+            <a class="nav-link active" href="{% url 'weapons' %}">Зброя підрозділу</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{}">Речове забезпечення</a>
+            <a class="nav-link active" href="{% url 'ammo' %}">Боєкомплект підрозлділу</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Речове забезпечення</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -43,7 +46,8 @@
   </nav>
   {% block content %}
   {% endblock %}
-  
+
   <script src="{% static 'js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
 </body>
+
 </html>

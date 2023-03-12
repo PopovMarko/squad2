@@ -1,35 +1,36 @@
-{% extends "evening/base_generic.html" %} 
+{% extends "evening/base_generic.html" %}
 {% block content %}
+
 <head>
 </head>
 <div class="container">
-    <h2>Зброя підрозділу</h2>
-      <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
-    <table class="table table-striped">
-       <thead>
-          <tr>
-            <th scope="col">№</th>
-            <th scope="col">Тип озброєння</th>
-            <th scope="col">Найменування</th>
-            <th scope="col">Номер</th>
-            <th scope="col">Рік виробництва</th>
-            <th scope="col">Закріплено</th>
-            <th scope="col">Регістр</th>
-          </tr>
-       </thead>
-       <tbody>
-        {% for w in weapons_list %}
-          <tr>
-            <th scope="row">{{forloop.counter}}</th>
-            <td>{{w.weapon_type.w_type}}</td>
-            <td>{{w.weapon_name}}</td>
-            <td><a href="{{ w.get_absolute_url }}">{{w.weapon_number}}</td>
-            <td>{{w.year_manufacture|date:"Y"}}</td> 
-            <td>{{w.soldier_ref}}</td>
-            <td>{{w.register}}</td>
-          </tr>
-        {% endfor %}
-       </tbody>
-    </table>
-  </div>
+  <h2>Зброя підрозділу</h2>
+  <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Тип озброєння</th>
+        <th scope="col">Найменування</th>
+        <th scope="col">Номер</th>
+        <th scope="col">Рік виробництва</th>
+        <th scope="col">Закріплено</th>
+        <th scope="col">Регістр</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for w in weapons_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{w.weapon_type.w_type}}</td>
+        <td>{{w.weapon_name}}</td>
+        <td><a href="{{ w.get_absolute_url }}">{{w.weapon_number}}</td>
+        <td>{{w.year_manufacture|date:"Y"}}</td>
+        <td>{{w.soldier_ref}}</td>
+        <td>{{w.register|}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

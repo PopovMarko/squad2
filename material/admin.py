@@ -1,3 +1,6 @@
 from django.contrib import admin
+from material import *
 
-# Register your models here.
+
+class ConsignmentAdmin(admin.ModelAdmin):
+    pass

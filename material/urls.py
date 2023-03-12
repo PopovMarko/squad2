@@ -1,4 +1,3 @@
-
 """squad2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,7 +18,7 @@ from material.views import *
 
 
 urlpatterns = [
-    # path('', SoldiersList.as_view(), name='index'),
+    path("", MaterialIndex.as_view(), name="material-index"),
     # path('weapons/', WeaponsList.as_view(), name='weapons'),
     # path('soldiers_card/<pk>/',
     #      SoldiersCard.as_view(), name='soldier-card'),

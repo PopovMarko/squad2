@@ -11,7 +11,7 @@ class WeaponsAdmin(admin.ModelAdmin):
 
 
 class SoldiersAdmin(admin.ModelAdmin):
-    list_display = ('slug', 'position_name', 'surname', 'name',
+    list_display = ('surname', 'name',
                     'fathers_name', 'callsign', 'rank')
     list_display_links = ('surname',)
     search_fields = ('surname', 'callsign')

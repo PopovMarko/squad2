@@ -7,21 +7,17 @@ class SoldierAddForm (forms.ModelForm):
     class Meta:
         model = Soldiers
         fields =(
-            'slug', 'surname', 'name', 'fathers_name', 'callsign', 'position_name', 'mil_prof', 
-            'position_rank', 'rank', 'phone', 'birth_date', 'passport', 'tax_number', 'blood_type', 
+            'surname', 'name', 'fathers_name', 'callsign', 
+             'rank', 'phone', 'birth_date', 'passport', 'tax_number', 'blood_type', 
             'addres', 'complect_center', 'mob_date', 'children', 'hight_s', 'size', 
             'boots_s', 'head_s', 'photo', 
         )
 
         widgets = {
-            'slug': forms.TextInput(attrs={'class': "form-control-sm"}),
             'surname': forms.TextInput(attrs={'class': "form-control-sm"}),
             'name': forms.TextInput(attrs={'class': "form-control-sm"}),
             'fathers_name': forms.TextInput(attrs={'class': "form-control-sm"}),
             'callsign': forms.TextInput(attrs={'class': "form-control-sm"}),
-            'position_name': forms.TextInput(attrs={'class': "form-control-sm"}),
-            'mil_prof': forms.TextInput(attrs={'class': "form-control-sm"}),
-            'position_rank': forms.TextInput(attrs={'class': "form-control-sm"}),
             'rank' : forms.Select(attrs={'class': "form-control-sm"}),
             'phone' : forms.TextInput(attrs={'class': "form-control-sm"}),
             'birth_date': forms.TextInput(attrs={'class': "form-control-sm"}),
