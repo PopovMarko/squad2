@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
-from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.edit import FormView, UpdateView, CreateView
 from .models import *
 from .forms import *
 
@@ -27,8 +27,8 @@ class SoldierCardRenew(UpdateView):
     template_name = "evening/soldier_renew.html"
     form_class = SoldierAddForm
 
-    def get_success_url(self):
-        return reverse("index")
+    # def get_success_url(self):
+    #     return reverse("index")
 
     # def get_form_kwargs(self):
     #     kwargs = super().get_form_kwargs()
@@ -50,6 +50,12 @@ class WeaponsDetaile(UpdateView):
         kwargs = super().get_form_kwargs()
         kwargs["instance"] = self.get_object()
         return kwargs
+
+
+class WeaponsAdd (CreateView):
+    model = Weapons
+    template_name = 'evening/weapons_add.html'
+    form_class = WeaponsAddForm
 
 
 class AmmoList(ListView):

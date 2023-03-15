@@ -27,10 +27,10 @@
       {% for i in soldiers_list %}
       <tr>
         <th scope="row">{{forloop.counter}}</th>
-        <td>{{i.mil_prof}}</a></td>
-        <td>{{i.position_name}}</a></td>
+        <td>{{i.staff.mil_prof}}</a></td>
+        <td><a href="{{ i.get_absolute_url }}">{{i.staff.position_name}}</a></td>
         <td>{{i.rank}}</td>
-        <td><a href="{{ i.get_absolute_url }}">{{i.surname}}</a></td>
+        <td>{{i.surname}}</a></td>
         <td>{{i.name}}</td>
         <td>{{i.fathers_name}}</td>
         <td>{{i.callsign}}</td>

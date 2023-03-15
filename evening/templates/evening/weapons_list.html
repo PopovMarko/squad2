@@ -5,6 +5,7 @@
 </head>
 <div class="container">
   <h2>Зброя підрозділу</h2>
+    <a href={% url "weapons-add" %} class="btn btn-primary" style="float:right">Додати</a></span>
   <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
   <table class="table table-striped">
     <thead>
@@ -27,7 +28,7 @@
         <td><a href="{{ w.get_absolute_url }}">{{w.weapon_number}}</td>
         <td>{{w.year_manufacture|date:"Y"}}</td>
         <td>{{w.soldier_ref}}</td>
-        <td>{{w.register|}}</td>
+        <td>{{w.register}}</td>
       </tr>
       {% endfor %}
     </tbody>
