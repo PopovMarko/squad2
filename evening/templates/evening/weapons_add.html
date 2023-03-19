@@ -1,0 +1,18 @@
+{% extends 'evening/base_generic.html' %} 
+{% block content %}
+
+<head> </head>
+<div class="container">
+  <h3>Додавання зброї</h3>
+  <p>
+    кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}}
+  </p>
+    <form method="POST" action="" class="form-group form-control">
+    <table class="table table-sm">
+      {% csrf_token %}
+      {{form.as_table}}
+    </table>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+  </form>
+</div>
+{% endblock %}

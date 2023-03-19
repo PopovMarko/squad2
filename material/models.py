@@ -1,5 +1,6 @@
 from django.db import models
 from evening.models import Soldiers
+from django.urls import reverse
 
 
 class Stock(models.Model):
@@ -13,6 +14,9 @@ class Stock(models.Model):
 
     def __str__(self):
         return str(self.goods_ref)
+
+    def get_absolute_url(self):
+        return reverse('material-index')
 
 
 class Goods(models.Model):
@@ -63,6 +67,11 @@ class Consignment(models.Model):
 
     def __str__(self):
         return self.cons_number
+
+    def get_absolute_url(self):
+        return reverse("consignment-detail", args=[str(self.pk)])
+
+        # return reverse("soldier-card", args=[str(self.pk)])
 
 
 class ConsignmentGoods(models.Model):

@@ -11,6 +11,7 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">№</th>
+        <th scope="col">Код посади</th>
         <th scope="col">ВОС</th>
         <th scope="col">Посада</th>
         <th scope="col">Звання</th>
@@ -24,9 +25,10 @@
       </tr>
     </thead>
     <tbody>
-      {% for i in soldiers_list %}
+      {% for i in staff_detail %}
       <tr>
         <th scope="row">{{forloop.counter}}</th>
+        <td>{{i.slug}}</a></td>
         <td>{{i.staff.mil_prof}}</a></td>
         <td><a href="{{ i.get_absolute_url }}">{{i.staff.position_name}}</a></td>
         <td>{{i.rank}}</td>

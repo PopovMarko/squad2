@@ -20,8 +20,13 @@ from material.views import *
 urlpatterns = [
     path("", MaterialList.as_view(), name="material-index"),
     path("goods/", GoodsList.as_view(), name="goods-index"),
+    path("goods/add/", GoodsAdd.as_view(), name="goods-add"),
     path("service/", ServiceList.as_view(), name="service-index"),
+    path("service/add/", ServiceAdd.as_view(), name="service-add"),
     path("consignment/", ConsignmentList.as_view(), name="consignment-index"),
+    path("consignment/detail/<pk>/", ConsignmentDetail.as_view(),
+         name='consignment-detail'),
+    path("consignment/add/", ConsignmentAdd.as_view(), name="consignment-add")
     # path("consignment/add/", ConsignmentAdd.as_view(), name='consignment-add'),
     # path('weapons/', WeaponsList.as_view(), name='weapons'),
     # path('soldiers_card/<pk>/',

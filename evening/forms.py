@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 
 
-class SoldierAddForm (forms.ModelForm):
+class StaffUpdateForm (forms.ModelForm):
 
     class Meta:
         model = Soldiers

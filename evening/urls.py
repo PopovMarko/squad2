@@ -19,14 +19,12 @@ from evening.views import *
 
 urlpatterns = [
     path("", SoldiersList.as_view(), name="index"),
+    path("staff/", StaffList.as_view(), name="staff_list"),
+    path("staff_detail/<pk>", StaffDetail.as_view(), name="staff-detail"),
+    path("soldiers_card/<pk>/update/",
+         StaffUpdate.as_view(), name="staff-update"),
     path("weapons/", WeaponsList.as_view(), name="weapons"),
     path("weapons/detaile/<pk>", WeaponsDetaile.as_view(), name="weapons_detaile"),
-    path("soldiers_card/<pk>", SoldiersCard.as_view(), name="soldier-card"),
-    path("ammo/", AmmoList.as_view(), name="ammo"),
-    path("soldiers_card/<pk>/update/",
-         SoldierCardRenew.as_view(), name="soldier-card-update"),
-    path("staff/", StaffList.as_view(), name="staff_list"),
     path("weapons/add/", WeaponsAdd.as_view(), name='weapons-add'),
-
-    path("test/", Test.as_view(), name="tt"),
+    path("ammo/", AmmoList.as_view(), name="ammo"),
 ]

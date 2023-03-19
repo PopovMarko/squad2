@@ -6,55 +6,56 @@
 
 <div class="container" style="padding-top:10px">
   <span><h3 style="display:inline-block">Ососбова картка війсковослужбовця</h3>    
-    <a href={% url "soldier-card-update" soldiers_card.id %} class="btn btn-primary" style="float:right">Редагувати</a></span>
-  <h4>{{soldiers_card.rank}} {{soldiers_card}} ({{soldiers_card.callsign}})</h4>
+    <a href={% url "staff-update" staff_detail.id %} class="btn btn-primary" style="float:right">Редагувати</a></span>
+  <h4>{{staff_detail.rank}} {{staff_detail}} ({{staff_detail.callsign}})</h4>
   <hr size=4>
   <section class="section" style="font-size:14px">
+    {{staff_detail}}
     <div class="row">
         <div class="col-lg-4"> 
               <dl class = "dl-horizontal">
                 <dt>Код посади</dt>
-                <dd>- {{soldiers_card.staff.slug}}</dd>
+                <dd>- {{staff_detail.staff.slug}}</dd>
                 <dt>ВОС</dt>
-                <dd>- {{soldiers_card.staff.mil_prof}}</dd>
+                <dd>- {{staff_detail.staff.mil_prof}}</dd>
                 <dt>Посада</dt>
-                <dd>- {{soldiers_card.staff.position_name}}</dd>
+                <dd>- {{staff_detail.staff.position_name}}</dd>
                 <dt>Звання посади</dt>
-                <dd>- {{soldiers_card.staff.position_rank}}</dd>
+                <dd>- {{staff_detail.staff.position_rank}}</dd>
                 <dt>Дата народження</dt>
-                <dd>- {{soldiers_card.birth_date}}</dd>
+                <dd>- {{staff_detail.birth_date}}</dd>
                 <dt>Паспорт</dt>
-                <dd>- {{soldiers_card.passport}}</dd>
+                <dd>- {{staff_detail.passport}}</dd>
                 <dt>ІПН</dt>
-                <dd>- {{soldiers_card.tax_number}}</dd>
+                <dd>- {{staff_detail.tax_number}}</dd>
                 <dt>Адреса</dt>
-                <dd>- {{soldiers_card.addres}}</dd>
+                <dd>- {{staff_detail.addres}}</dd>
               </dl>     
           </div>
         <div class="col-lg-4"> 
               <dl class = "dl-horizontal">
                 <dt>Телефон</dt>
-                <dd>- {{soldiers_card.phone}}</dd>
+                <dd>- {{staff_detail.phone}}</dd>
                 <dt>Группа крові</dt>
-                <dd>- {{soldiers_card.blood_type}}</dd>
+                <dd>- {{staff_detail.blood_type}}</dd>
                 <dt>Дата мобілізаціі</dt>
-                <dd>- {{soldiers_card.mob_date}}</dd>
+                <dd>- {{staff_detail.mob_date}}</dd>
                 <dt>Діти</dt>
-                <dd>- {{soldiers_card.children}}</dd>
+                <dd>- {{staff_detail.children}}</dd>
                 <dt>Розмір</dt>
-                <dd>- {{soldiers_card.size}}</dd>
+                <dd>- {{staff_detail.size}}</dd>
                 <dt>Взуття</dt>
-                <dd>- {{soldiers_card.boots_s}}</dd>
+                <dd>- {{staff_detail.boots_s}}</dd>
                 <dt>Головний убор</dt>
-                <dd>- {{soldiers_card.head_s}}</dd>
+                <dd>- {{staff_detail.head_s}}</dd>
                 <dt>Зріст</dt>
-                <dd>- {{soldiers_card.hight_s}}</dd>
+                <dd>- {{staff_detail.hight_s}}</dd>
               </dl>     
           </div>
         <div class="col-lg-4"> 
               <h5>Закріплена зброя</h5>    
               <dl class = "dl-horizontal">
-              {% for w in soldiers_card.weapons_set.all %}
+              {% for w in staff_detail.weapons_set.all %}
                 <dt>{{w.weapon_name}}
                 <dd>- {{w.weapon_number}}
               {% endfor %}

@@ -10,12 +10,19 @@ class Staff(models.Model):
     position_rank = models.CharField(
         max_length=50, verbose_name="Звання посади")
     soldier = models.OneToOneField(
-        "Soldiers", on_delete=models.PROTECT, null=True, blank=True,
-        verbose_name="Військовослужбовець"
+        "Soldiers", on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='staff', verbose_name="Військовослужбовець"
     )
+
+    class Meta:
+        verbose_name = 'Штатний розклад'
+        ordering = ('slug',)
 
     def __str__(self):
         return self.position_name
+
+    def get_absolute_url(self):
+        return reverse("staff-detail", args=[str(self.soldier_id)])
 
 
 class Soldiers(models.Model):
@@ -65,7 +72,7 @@ class Soldiers(models.Model):
         return f"{self.surname}  {self.name}  {self.fathers_name}"
 
     def get_absolute_url(self):
-        return reverse("soldier-card", args=[str(self.pk)])
+        return reverse("staff-detail", args=[str(self.pk)])
 
     class Meta:
         verbose_name = "Військовослужбовець"

@@ -1,0 +1,37 @@
+{% extends "evening/base_generic.html" %}
+
+{% block content %}
+
+<head>
+</head>
+<div class="container">
+    <h2>Штатний розклад </h2>
+    <p>кількість за штатом {{soldiers_list.count}} кількість за списком {{cont}} </p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Код посади</th>
+                <th scope="col">ВОС</th>
+                <th scope="col">Посада</th>
+                <th scope="col">Звання посади</th>
+                <th scope="col">Звання</th>
+                <th scope="col">Військовослужбовець</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in staff_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.slug }}</a></td>
+                <td>{{ i.mil_prof }}</a></td>
+                <td>{{ i.position_name }}</a></td>
+                <td>{{ i.position_rank }}</td>
+                <td>{{ i.soldier.rank }}</td>
+                <td><a href="{{ i.get_absolute_url }}">{{ i.soldier }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

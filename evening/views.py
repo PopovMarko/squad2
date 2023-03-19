@@ -5,6 +5,17 @@ from .models import *
 from .forms import *
 
 
+class StaffList(ListView):
+    model = Staff
+    template_name = "evening/staff_list.html"
+
+
+class StaffDetail(DetailView):
+    model = Soldiers
+    template_name = "evening/staff_detail.html"
+    context_object_name = "staff_detail"
+
+
 class SoldiersList(ListView):
     model = Soldiers
     template_name = "evening/index.html"
@@ -16,16 +27,10 @@ class SoldiersList(ListView):
         return context
 
 
-class SoldiersCard(DetailView):
+class StaffUpdate(UpdateView):
     model = Soldiers
-    template_name = "evening/soldiers_detail.html"
-    context_object_name = "soldiers_card"
-
-
-class SoldierCardRenew(UpdateView):
-    model = Soldiers
-    template_name = "evening/soldier_renew.html"
-    form_class = SoldierAddForm
+    template_name = "evening/staff_update.html"
+    form_class = StaffUpdateForm
 
     # def get_success_url(self):
     #     return reverse("index")
@@ -61,13 +66,3 @@ class WeaponsAdd (CreateView):
 class AmmoList(ListView):
     model = Ammo
     template_name = "evening/ammo_list.html"
-
-
-class StaffList(ListView):
-    model = Staff
-    template_name = "evening/staff_index.html"
-
-
-class Test(ListView):
-    model = Soldiers
-    template_name = "evening/test.html"
