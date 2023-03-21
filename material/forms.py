@@ -10,6 +10,16 @@ class ConsignmentAddForm (forms.ModelForm):
         fields = '__all__'
 
 
+class ConsignmentGoodsForm (forms.ModelForm):
+    class Meta:
+        model = ConsignmentGoods
+        fields = '__all__'
+
+
+# ConsignmentGoodsFormSet = modelformset_factory(
+#     Consignment, ConsignmentGoods, form=ConsignmentGoodsForm, mextra=2)
+
+
 class ServiceAddForm (forms.ModelForm):
     class Meta:
         model = Service
@@ -20,6 +30,3 @@ class GoodsAddForm (forms.ModelForm):
     class Meta:
         model = Goods
         fields = '__all__'
-
-
-# class ConsignmentWithGoodsForm()

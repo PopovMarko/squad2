@@ -25,7 +25,7 @@ class Goods(models.Model):
     """
 
     goods_code = models.CharField(
-        max_length=50, blank=True, null=True, verbose_name="Артикул")
+        max_length=50, unique=True, blank=True, null=True, verbose_name="Артикул")
     goods_name = models.CharField(
         max_length=255, blank=True, null=True, verbose_name="Найменування")
     life_time = models.DurationField(default=365, verbose_name="Строк служби")
@@ -66,7 +66,7 @@ class Consignment(models.Model):
         default=True, verbose_name="Приходна накладна")
 
     def __str__(self):
-        return self.cons_number
+        return f'{self.cons_number} {self.cons_date}'
 
     def get_absolute_url(self):
         return reverse("consignment-detail", args=[str(self.pk)])
@@ -80,7 +80,7 @@ class ConsignmentGoods(models.Model):
     """
 
     consignment_ref = models.ForeignKey(
-        "consignment", on_delete=models.PROTECT, blank=True, null=True, verbose_name="Накладна"
+        "consignment", on_delete=models.CASCADE, blank=True, null=True, verbose_name="Накладна"
     )
     goods_ref = models.ForeignKey(
         "goods", on_delete=models.PROTECT, blank=True, null=True, verbose_name="Товар")

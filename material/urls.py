@@ -26,10 +26,9 @@ urlpatterns = [
     path("consignment/", ConsignmentList.as_view(), name="consignment-index"),
     path("consignment/detail/<pk>/", ConsignmentDetail.as_view(),
          name='consignment-detail'),
-    path("consignment/add/", ConsignmentAdd.as_view(), name="consignment-add")
-    # path("consignment/add/", ConsignmentAdd.as_view(), name='consignment-add'),
-    # path('weapons/', WeaponsList.as_view(), name='weapons'),
-    # path('soldiers_card/<pk>/',
-    #      SoldiersCard.as_view(), name='soldier-card'),
-    # path('ammo/', AmmoList.as_view(), name='ammo'),
+    path("consignment/add/", ConsignmentAdd.as_view(), name="consignment-add"),
+    path("consignmentgoods/<pk>/", ConsignmentGoodsUpdate.as_view(),
+         name="consignment-goods-list")
+
+
 ]
