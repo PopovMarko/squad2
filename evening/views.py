@@ -32,14 +32,6 @@ class StaffUpdate(UpdateView):
     template_name = "evening/staff_update.html"
     form_class = StaffUpdateForm
 
-    # def get_success_url(self):
-    #     return reverse("index")
-
-    # def get_form_kwargs(self):
-    #     kwargs = super().get_form_kwargs()
-    #     kwargs['instance'] = self.get_object()
-    #     return kwargs
-
 
 class WeaponsList(ListView):
     model = Weapons

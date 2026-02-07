@@ -1,0 +1,20 @@
+{% extends "material/base_material.html" %} {% block content %}
+
+<head> </head>
+<div class="container">
+  <span>
+    <h4 style="display:inline-block">Перелік матеріально-технічних засобів до накладної № 
+      {{object.cons_number}} від {{object.cons_date|date:"d-m-Y"}}</h4>
+    <a href="{% url 'goods-add' %}" class="btn btn-primary" style="float:right">Додати</a>
+  </span>
+  <form method=POST>
+        <table class="table table-sm">
+            {% csrf_token %}
+            {{form.as_table}}
+        </table>
+        <div>
+            <button type="submit" class="btn btn-primary">Зберегти</button>
+        </div>
+  </form>
+</div>
+{% endblock %}

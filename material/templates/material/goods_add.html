@@ -1,0 +1,14 @@
+{% extends 'material/base_material.html' %} {% block content %}
+
+<head> </head>
+<div class="container">
+  <h3>Додавання найменування товарно-матеріальних цінностей</h3>
+  <form method="POST" class="form-group" class="form_control">
+    <table class="table table-sm">
+      {% csrf_token %}
+      {{form.as_table}}
+    </table>
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+  </form>
+</div>
+{% endblock %}

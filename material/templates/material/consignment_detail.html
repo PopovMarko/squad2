@@ -1,0 +1,40 @@
+{% extends "material/base_material.html" %}
+
+{% block content %}
+
+<head></head>
+
+<div class="container" style="padding-top:10px">
+  <span>
+    <h4 style="display:inline-block">Накладна № {{object.cons_number}} 
+      від {{object.cons_date}} служба {{object.cons_agent}}</h4>
+    <a href='{}' class="btn btn-primary" style="float:right">Редагувати</a>
+  </span>
+  <hr size=4>
+    <section class = "section" style = "font-size:14px" >
+      <form method="post" action="{% url 'consignment_goods-detail' pk=object.id %}" class='form-group form-control'>
+        {% for hidden_field in form.hidden_fields %}
+          {{ hidden_field.errors }}
+          {{ hidden_field}}
+          {% endfor %}
+          {% csrf_token %}
+          {{ form.management_form }}
+          {{ form.non_form_errors }}
+          {% for good_form in form.forms %}
+              {% if good_form.instance.id %}
+              good: {{ good_form.instance.goods_name }}
+              {% endif %}
+            {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field.errors }}
+          {% endfor %}
+          <table>
+            {{ consignmentgoods_form.as_table }}
+          </table>
+          {% endfor %}
+      <table class = "table table-striped" >
+          {{formset}}
+        </table>
+        <button type='submit' class='btn btn-primary'>Зберегти</button>
+      </form>
+    </section>
+{% endblock %}

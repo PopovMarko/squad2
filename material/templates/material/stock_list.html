@@ -1,0 +1,28 @@
+{% extends "material/base_material.html" %}
+
+{% block content %}
+
+<head>
+</head>
+<div class="container">
+  <h2>Склад підрозділу</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Найменування</th>
+        <th scope="col">Кількість</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in stock_list %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="#">{{ i.goods_ref }}</a></td>
+        <td>{{ i.goods_quantity }}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

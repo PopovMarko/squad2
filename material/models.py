@@ -16,7 +16,7 @@ class Stock(models.Model):
         return str(self.goods_ref)
 
     def get_absolute_url(self):
-        return reverse('material-index')
+        return reverse('material-index', kwargs={'pk': self.pk})
 
 
 class Goods(models.Model):
@@ -48,7 +48,10 @@ class Service(models.Model):
         max_length=50, blank=True, null=True, verbose_name="Начальник")
 
     def __str__(self):
-        return self.service_name
+        return self.service_name or ''
+
+    def get_absolute_url(self):
+        return reverse('service-detail', kwargs={'pk': self.pk})
 
 
 class Consignment(models.Model):
@@ -66,12 +69,10 @@ class Consignment(models.Model):
         default=True, verbose_name="Приходна накладна")
 
     def __str__(self):
-        return f'{self.cons_number} {self.cons_date}'
+        return self.cons_number or ''
 
     def get_absolute_url(self):
-        return reverse("consignment-detail", args=[str(self.pk)])
-
-        # return reverse("soldier-card", args=[str(self.pk)])
+        return reverse("consignment-detail", kwargs={'pk': self.pk})
 
 
 class ConsignmentGoods(models.Model):
@@ -85,6 +86,9 @@ class ConsignmentGoods(models.Model):
     goods_ref = models.ForeignKey(
         "goods", on_delete=models.PROTECT, blank=True, null=True, verbose_name="Товар")
     quantity = models.IntegerField(verbose_name="Кількість")
+
+    def get_absolute_url(self):
+        return reverse("consignment-detail", args=[str(self.pk)])
 
 
 class ReleaseToSoldiers(models.Model):

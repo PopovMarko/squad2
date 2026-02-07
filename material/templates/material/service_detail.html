@@ -1,0 +1,26 @@
+{% extends "material/base_material.html" %}
+
+{% block content %}
+
+<head></head>
+
+<div class="container" style="padding-top:10px">
+  <span>
+    <h4 style="display:inline-block">Служба </h4>
+    <a href="{% url 'service-delete' object.pk %}" class="btn btn-primary" style="float:right">Видалити</a>
+    <a href="{% url 'service-update' object.pk %}" class="btn btn-primary" style="float:right">Редагувати</a>
+  </span>
+  <hr size=4>
+  <section class="section" style="font-size:14px">
+    {{staff_detail}}
+    <div class="row">
+        <div class="col-lg-4"> 
+              <dl class = "dl-horizontal">
+                <dt>Найменування</dt>
+                <dd>- {{ object.service_name }}</dd>
+                <dt>Керівник</dt>
+                <dd>- {{ object.service_comm}}</dd>
+        </div>
+    </div>
+  </section>
+  {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "material/base_material.html" %}
+
+{% block content %}
+
+<head>
+</head>
+<div class="container">
+  <span><h3 style="display:inline-block">Накладні</h3>    
+    <a href="{% url 'consignment-add' %}" class="btn btn-primary" style="float:right">Додати</a></span>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Номер</th>
+        <th scope="col">Дата</th>
+        <th scope="col">Служба</th>
+        <th scope="col">Приходна</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in consignment_list %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="{% url 'consignment_goods-detail' i.id %}">{{ i.cons_number }}</a></td>
+        <td>{{ i.cons_date }}</td>
+        <td>{{ i.cons_agent }}</td>
+        <td>{{ i.cons_status }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

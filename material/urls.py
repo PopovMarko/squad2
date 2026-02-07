@@ -19,16 +19,33 @@ from material.views import *
 
 urlpatterns = [
     path("", MaterialList.as_view(), name="material-index"),
+
     path("goods/", GoodsList.as_view(), name="goods-index"),
+
     path("goods/add/", GoodsAdd.as_view(), name="goods-add"),
+
     path("service/", ServiceList.as_view(), name="service-index"),
+
     path("service/add/", ServiceAdd.as_view(), name="service-add"),
+
+    path("service/update/<int:pk>/",
+         ServiceUpdate.as_view(), name='service-update'),
+
+    path("service/detail/<int:pk>/",
+         ServiceDetail.as_view(), name="service-detail"),
+
+    path("service/delete/<int:pk>/",
+         ServiceDelete.as_view(), name='service-delete'),
+
     path("consignment/", ConsignmentList.as_view(), name="consignment-index"),
-    path("consignment/detail/<pk>/", ConsignmentDetail.as_view(),
-         name='consignment-detail'),
+
+    path("consignment_goods/detail/<int:pk>/", ConsignmentGoodsDetail.as_view(),
+         name='consignment_goods-detail'),
+
     path("consignment/add/", ConsignmentAdd.as_view(), name="consignment-add"),
-    path("consignmentgoods/<pk>/", ConsignmentGoodsUpdate.as_view(),
-         name="consignment-goods-list")
+
+    path("consignment/update/<int:pk>/", ConsignmentUpdate.as_view(),
+         name="consignment-update")
 
 
 ]

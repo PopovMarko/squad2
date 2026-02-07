@@ -1,0 +1,16 @@
+{% extends "material/base_material.html" %} {% block content %}
+
+<head> </head>
+<div class="container">
+  <h3>Редагування картки служби</h3>
+  <form method="POST" action="{% url 'service-update' pk=object.pk %}" class="form-group form-control">
+    <table class="table table-sm">
+      {% csrf_token %} 
+      {{form.as_table}}
+    </table>
+    <div>
+      <button type="submit" class="btn btn-primary">Зберегти</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

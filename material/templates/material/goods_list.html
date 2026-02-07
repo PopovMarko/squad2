@@ -1,0 +1,30 @@
+{% extends "material/base_material.html" %} {% block content %}
+
+<head> </head>
+<div class="container">
+   <span><h3 style="display:inline-block">Довідник матеріально-технічних засобів</h3>    
+       <a href="{% url 'goods-add' %}" class="btn btn-primary" style="float:right">Додати</a></span>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class=header scope="col">№</th>
+        <th class=header scope="col">Артикул</th>
+        <th class=header scope="col">Найменування</th>
+        <th class=header scope="col">Строк служби</th>
+        <th class=header scope="col">Опис</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in goods_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{a.goods_code}}</td>
+        <td>{{a.goods_name}}</td>
+        <td><a href="{}">{{a.life_time}}</td>
+        <td>{{a.goods_description}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

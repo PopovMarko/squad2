@@ -1,0 +1,26 @@
+{% extends "material/base_material.html" %} {% block content %}
+
+<head> </head>
+<div class="container">
+   <span><h3 style="display:inline-block">Довідник служб підрозділу</h3>    
+       <a href="{% url 'service-add' %}" class="btn btn-primary" style="float:right">Додати</a></span>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class=header scope="col">№</th>
+        <th class=header scope="col">Найменування</th>
+        <th class=header scope="col">Начальник служби</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in service_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td><a href="{{ a.get_absolute_url }}">{{a.service_name}}</td>
+        <td>{{a.service_comm}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
